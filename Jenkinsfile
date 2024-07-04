@@ -44,7 +44,7 @@ pipeline{
         }
         stage('Deploy Frontend'){
             steps{
-                dir('frontend'){
+                dir('DeployFrontCurso'){
                     git credentialsId: 'a27fd5f8-54b9-4285-9181-6e40e73d0020', url: 'https://github.com/AnnaKarolineNunes/tasks-api-test'
                     bat 'mvn clean package'
                     deploy adapters: [tomcat8(credentialsId: 'TomcatLogin', path: '', url: 'http://localhost:8001/')], contextPath: 'tasks', war: 'target/tasks.war'
@@ -53,7 +53,7 @@ pipeline{
         }
         stage('Functional Test'){
             steps{
-                dir('functional-test'){
+                dir('TesteSelenium'){
                     git credentialsId: 'a27fd5f8-54b9-4285-9181-6e40e73d0020', url: 'https://github.com/AnnaKarolineNunes/test-functional-test'
                      bat 'mvn test'
                 }
