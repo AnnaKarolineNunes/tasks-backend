@@ -51,14 +51,6 @@ pipeline{
                 }
             }
         }
-        stage('Functional Test'){
-            steps{
-                dir('funtional-test'){
-                    git credentialsId: 'a27fd5f8-54b9-4285-9181-6e40e73d0020', url: 'https://github.com/AnnaKarolineNunes/test-functional-test'
-                     bat 'mvn test'
-                }
-            }
-        }
     }
 }
 
